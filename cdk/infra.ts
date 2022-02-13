@@ -1,19 +1,20 @@
 import {
   App,
-  aws_s3,
+  CfnOutput,
   LegacyStackSynthesizer,
   RemovalPolicy,
   Stack,
 } from "aws-cdk-lib";
+import { Bucket } from "aws-cdk-lib/aws-s3";
 import { BucketDeployment, Source } from "aws-cdk-lib/aws-s3-deployment";
 
-class HelloWorldStack extends Stack {
+export class HelloWorldStack extends Stack {
   constructor(app: App) {
     super(app, "HelloWorld", {
       synthesizer: new LegacyStackSynthesizer(),
     });
 
-    const bucket = new aws_s3.Bucket(this, "HelloWorldBucket", {
+    const bucket = new Bucket(this, "HelloWorldBucket", {
       publicReadAccess: true,
       removalPolicy: RemovalPolicy.DESTROY,
       websiteIndexDocument: "index.html",
@@ -27,5 +28,9 @@ class HelloWorldStack extends Stack {
         destinationBucket: bucket,
       },
     );
+
+    new CfnOutput(this, "WebsiteUrl", {
+      value: bucket.bucketWebsiteUrl,
+    });
   }
 }
