@@ -1,0 +1,38 @@
+Resources:
+  HelloWorldBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      WebsiteConfiguration:
+        IndexDocument: index.html
+    UpdateReplacePolicy: Delete
+    DeletionPolicy: Delete
+  HelloWorldBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket:
+        Ref: HelloWorldBucket
+      PolicyDocument:
+        Statement:
+          - Action: s3:GetObject
+            Effect: Allow
+            Principal:
+              AWS: "*"
+            Resource:
+              Fn::Join:
+                - ""
+                - - Fn::GetAtt:
+                      - HelloWorldBucket
+                      - Arn
+                  - /*
+        Version: "2012-10-17"
+  
+Outputs:
+  WebsiteUrl:
+    Value:
+      Fn::GetAtt:
+        - HelloWorldBucket
+        - WebsiteURL
+  BucketDomainName:
+    Value:
+      !Ref HelloWorldBucket
+

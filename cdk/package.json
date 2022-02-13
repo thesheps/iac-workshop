@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "deploy": "cdk deploy --app 'ts-node app.ts'"
+    "deploy": "cdk synth --app 'ts-node app.ts'"
   },
   "keywords": [],
   "author": "",
