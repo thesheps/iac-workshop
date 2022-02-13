@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+        <title>Auto Kittenator!</title>
+    </head>
+    <body>
+        <h1>Welcome to the Kittenator!</h1>
+        <button onclick="getKitten()">Press For a Cat!</button>
+        <img style="margin-right: auto; margin-left: auto; display: block;" id="kitten-img" />
+    </body>
+
+    <script type="text/javascript">
+        async function getKitten() {
+            const img = document.getElementById("kitten-img");
+            img.src = "";
+            img.src = "https://cataas.com/cat?t=" + new Date().getTime();
+        }
+    </script>
+</html>
