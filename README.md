@@ -1,4 +1,4 @@
-# IAC Workshop
+# IaC Workshop
 WELCOME, intrepid travellers. This workshop was hastily thrown-together to demonstrate and compare different Infrastructure as code tools!
 
 **NOTE**: This workshop is super opinionated. It's tailored specifically towards `AWS`, and has only been tested on `Mac OSX Silicon`, using `zsh` as the shell.
