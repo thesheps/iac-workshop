@@ -184,5 +184,5 @@ override.tf.json
 .terraformrc
 terraform.rc
 cdk.out/
-
+.DS_Store
 # End of https://www.toptal.com/developers/gitignore/api/node,terraform,pulumi
